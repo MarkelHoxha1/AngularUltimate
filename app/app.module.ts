@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {PassengerDashboardModule} from './passenger-dashboard/passenger-dashboard.module';
+
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +11,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    PassengerDashboardModule
   ],
   bootstrap: [
     AppComponent
