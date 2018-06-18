@@ -1,39 +1,45 @@
+import { Component } from '@angular/core';
 
-import {Component} from '@angular/core';
-import { Agent } from 'https';
-
+interface Nav {
+  link: string,
+  name: string,
+  exact: boolean
+}
 
 @Component({
-  selector:'app-root',
+  selector: 'app-root',
   styleUrls: ['app.component.scss'],
   template: `
-  <div class="app">
-<passenger-dashboard></passenger-dashboard>
- <!-- <button (click) = "handleClick(username.value)" >Change Name </button>
-   
-        <input [value]="name" type="text" (input)="handleInputEvent($event.target.value)">    
-        <div *ngIf="name.length > 2"> Searching for ...{{name}}</div>
-        -->
-  </div>
-  
+    <div class="app">
+      <nav class="nav">
+        <a 
+          *ngFor="let item of nav"
+          [routerLink]="item.link"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.exact }">
+          {{ item.name }}
+        </a>
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
   `
 })
-export class AppComponent{
-/*tittle: string;
-numberOne:number = 1;
-numberTwo:number = 2;
-logo: string = 'img/logo.jpg';
-name: string = "";
-isHappy :boolean = false;
-
-handleClick(value : string){
- console.log(value);
-}
-handleInputEvent(value : string)
-{
-  this.name = value;
-}
-constructor(){
-  this.tittle = 'Ultimate Angular';
-} */
+export class AppComponent {
+  nav: Nav[] = [
+    {
+      link: '/',
+      name: 'Home',
+      exact: true
+    },
+    {
+      link: '/passengers',
+      name: 'Passengers',
+      exact: true
+    },
+    {
+      link: '/oops',
+      name: '404',
+      exact: false
+    }
+  ];
 }
